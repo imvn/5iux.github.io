@@ -45,3 +45,12 @@ $(function() {
     })
 
 })
+
+function openWin(obj){
+    var scheme = obj.getAttribute("s")?obj.getAttribute("s"):"https";
+    var host = obj.getAttribute("h")?obj.getAttribute("h"):"wice.eu.org";
+    var port = obj.getAttribute("p")?obj.getAttribute("p"):"3338";
+    var uri = obj.getAttribute("u")?obj.getAttribute("u"):"/";
+    var target = obj.getAttribute("t")?obj.getAttribute("t"):"_blank";
+    window.open(scheme+"://"+host+":"+port+uri,target);
+}
