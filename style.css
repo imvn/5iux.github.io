@@ -10,8 +10,8 @@ a{text-decoration: none;}
 a:hover{text-decoration: none;}
 svg.icon { width: 14px; height: 14px; margin: 0 5px 0 8px; vertical-align: -0.15em; fill: currentColor; overflow: hidden;}
 /*menu*/
-.navbar-light .navbar-nav .nav-link{ color: #fff; }
-.navbar-light .navbar-nav .active .nav-link{ color: #fff; }
+.navbar-light .navbar-nav .nav-link{ color: #fbc6ad; }
+.navbar-light .navbar-nav .active .nav-link{ color: #fbc6ad; }
 .navbar-light .navbar-nav .nav-link:hover{ color: #fff; }
 /* --- search --- */
 #search{width:100%;margin:0; padding: 0 0 10px; position: relative; z-index: 2000;  border-radius: 5px;}
