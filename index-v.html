@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Omo</title>
+    <link rel="apple-touch-icon-precomposed" href="280.png" />
+    <meta name="msapplication-TileImage" content="280.png" />
+    <link rel="shortcut icon" href="32.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="full-screen" content="yes">
+    <!--UC强制全屏-->
+    <meta name="browsermode" content="application">
+    <!--UC应用模式-->
+    <meta name="x5-fullscreen" content="true">
+    <!--QQ强制全屏-->
+    <meta name="x5-page-mode" content="app">
+    <!--QQ应用模式-->
+    <link rel="stylesheet" href="bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" id="font-awesome-css" href="all.min.css?ver=1.1422" type="text/css" media="all">
+    <script src="jquery.min.js"></script>
+    <script src="//at.alicdn.com/t/c/font_3846791_54137bsrvbs.js"></script>
+    <script src="sou.js"></script>
+    <script src="vue.global.prod.js"></script>
+    <link rel='stylesheet' href='style.css'>
+</head>
+
+<body>
+    <div id="app">
+        <!--视频头部背景-->
+        <div class="banner-video">
+            <!--视频来自阿里云首页，有需要请自行更换-->
+            <video autoplay loop muted>
+                <source src="3840-banner.mp4" type="video/mp4">
+            </video>
+            <!--注释掉视频可换成图片版本-->
+            <!--img src="https://cn.bing.com//th?id=OHR.HuntsMesa_JA-JP3140979616_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt=""-->
+            <div class="bottom-cover" style="background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, rgb(244 248 251 / 0.6) 50%, rgb(244 248 251) 100%);"></div>
+        </div>
+        <!--topbar开始-->
+        <style>
+            .navbar-toggler svg {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .navbar-toggler .bi-list-nested {
+                display: none;
+            }
+            
+            .navbar-toggler.collapsed .bi-list-nested {
+                display: block;
+            }
+            
+            .navbar-toggler.collapsed .bi-x {
+                display: none;
+            }
+            
+            .navbar-toggler .bi-x {
+                display: block;
+            }
+        </style>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="position: absolute; z-index: 10000;">
+            <a class="navbar-brand" href="/"><svg class="icon" aria-hidden="true" style="height: 32px;width: 32px;margin-right: -10px;margin-top: 5px;" alt="Omo"><use xlink:href="#icon-KMD-blue"></use></svg></a>
+            <button class="navbar-toggler collapsed" style="border: none; outline: none;" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="bi bi-list-nested" fill="currentColor" id="list-nested">
+                    <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 015 11h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5zm-2-4A.5.5 0 013 7h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm-2-4A.5.5 0 011 3h10a.5.5 0 010 1H1a.5.5 0 01-.5-.5z"></path>
+                </svg><span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" id="x">
+                        <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z"></path>
+                        <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z"></path>
+                    </svg><span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active" v-for="nav in navs">
+                        <a class="nav-link" rel="nofollow" :onclick="nav.o" :s="nav.s" :h="nav.h" :p="nav.p" :u="nav.u" :t="nav.t">{{nav.name}}</a>
+                    </li>
+                </ul>
+                <!-- <style>
+                    #he-plugin-simple {
+                        z-index: 1000;
+                    }
+                </style>
+                <div id="he-plugin-simple"></div>
+                <script>
+                    WIDGET = {
+                        CONFIG: {
+                            "modules": "01234",
+                            "background": 5,
+                            "tmpColor": "4A4A4A",
+                            "tmpSize": 14,
+                            "cityColor": "4A4A4A",
+                            "citySize": 14,
+                            "aqiSize": 14,
+                            "weatherIconSize": 22,
+                            "alertIconSize": 16,
+                            "padding": "8px 8px 8px 8px",
+                            "shadow": "1",
+                            "language": "auto",
+                            "borderRadius": 5,
+                            "fixed": "false",
+                            "vertical": "middle",
+                            "horizontal": "center",
+                            "key": "acd0fdcab4b9481a98d0f59145420fac"
+                        }
+                    }
+                </script>
+                <script src="https://widget.heweather.net/simple/static/js/he-simple-common.js?v=1.1"></script> -->
+            </div>
+        </nav>
+        <!--topbar结束-->
+        <div class="container" style="margin-top: 100px; position: relative; z-index: 100;">
+            <!--搜索开始-->
+            <div id="search" class="s-search">
+                <div id="search-list" class="hide-type-list">
+                    <div class="search-group group-a s-current" style="padding-left: 6px">
+                        <ul class="search-type">
+                            <li><input checked="" hidden="" type="radio" name="type" id="type-baidu" value="https://www.baidu.com/s?wd=" data-placeholder="百度一下"><label for="type-baidu"><span style="color:#2100E0">百度</span></label></li>
+                            <li><input hidden="" type="radio" name="type" id="type-pan" value="https://yunpan1.xyz/?q=" data-placeholder="电影、剧集、综艺、动漫"><label for="type-pan"><span style="color:#e3ab08">影视</span></label></li>
+                            <li><input hidden="" type="radio" name="type" id="type-bilibili" value="https://search.bilibili.com/all?keyword=" data-placeholder="视频、教程"><label for="type-bilibili"><span style="color:#05c5e3">哔哩</span></label></li>
+                            <li><input hidden="" type="radio" name="type" id="type-douyin" value="https://www.douyin.com/search/" data-placeholder="抖音记录美好生活"><label for="type-douyin"><span style="color:#b7aba8">抖音</span></label></li>
+                            <li><input hidden="" type="radio" name="type" id="type-zhihu" value="https://www.zhihu.com/search?type=content&q=" data-placeholder="知乎搜索"><label for="type-zhihu"><span style="color:#ff5722">知乎</span></label></li>
+                            <li><input hidden="" type="radio" name="type" id="type-weibo" value="https://s.weibo.com/weibo/" data-placeholder="微博搜索"><label for="type-weibo"><span style="color:#ff5722">微博</span></label></li>
+                            <!--li><input hidden="" type="radio" name="type" id="type-quan" value="https://wat.dyartstyle.com/index.php?r=l&hot=1&kw=" data-placeholder="搜索淘宝优惠券"><label for="type-quan"><span style="color:#ff5722">搜券</span></label></li-->
+                            <!--li><input hidden="" type="radio" name="type" id="type-google" value="https://www.google.com.hk/search?hl=zh-CN&q=" data-placeholder="谷歌搜索"><label for="type-google"><span style="color:#3B83FA">G</span><span style="color:#F3442C">o</span><span style="color:#FFC300">o</span><span style="color:#4696F8">g</span><span style="color:#2CAB4E">l</span><span style="color:#F54231">e</span></label></li-->                        
+                        </ul>
+                    </div>
+                </div>
+                <form action="https://www.baidu.com/s?wd=" method="get" target="_blank" id="super-search-fm">
+                    <input type="text" id="search-text" placeholder="百度一下" style="outline:0" autocomplete="off">
+                    <button class="submit" type="submit"><svg style="width: 20px; height: 20px; margin:7px 0; color: #29f;" class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-sousuo"></use>
+                        </svg><span></button>
+                    <ul id="word" style="display: none;"></ul>
+                </form>
+                <div class="set-check hidden-xs">
+                    <input type="checkbox" id="set-search-blank" class="bubble-3" autocomplete="off">
+                </div>
+            </div>
+            <!--搜索结束-->
+            <ul class="mylist row" v-for="row in rows">
+                <li class="title"><svg class="icon" aria-hidden="true">
+                        <use :xlink:href="row.icon"></use>
+                    </svg> {{row.name}}
+                </li>
+                <li class="col-3 col-sm-3 col-md-3 col-lg-1"  v-for="item in row.items">
+                    <a rel="nofollow" :onclick="item.o" :s="item.s" :h="item.h" p="3338" :u="item.u" :t="item.t">
+                        <svg class="icon" aria-hidden="true">
+                            <use :xlink:href="item.icon"></use>
+                        </svg>
+                        <span>{{item.name}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--版权信息开始-->
+        <p class="mt-5 mb-3 text-muted text-center">Copyright © 2022 <a href="https://aio.pages.dev/">Wen</a>.  All Right Reserved.</p>
+        <!--
+    作者:D.Young
+    主页：https://blog.5iux.cn/
+    github：https://github.com/5iux/5iux.github.io
+    日期：2021-08-02
+    版权所有，请勿删除
+    -->
+        <!--版权信息结束-->
+        <script>
+                const { createApp, ref } = Vue
+        createApp({
+            setup() {
+                return {
+                    navs: [
+                        {
+                            s: "http",
+                            h: "192.168.1.100",
+                            p: "8008",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'MinDoc'
+                        },
+                        {
+                            s: "http",
+                            h: "192.168.1.100",
+                            p: "8005",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Siyuan'
+                        },
+                        {
+                            s: "https",
+                            h: "192.168.1.100",
+                            p: "3338",
+                            u: "/i",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Notes'
+                        },
+                        {
+                            s: "https",
+                            h: "192.168.1.100",
+                            p: "5230",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Memos'
+                        },
+                        {
+                            s: "https",
+                            h: "t.wice.eu.org",
+                            p: "3338",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Ttyd'
+                        },
+                        {
+                            s: "https",
+                            h: "k.wice.eu.org",
+                            p: "3338",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Kodbox'
+                        },
+                        {
+                            s: "https",
+                            h: "ke.wice.eu.org",
+                            p: "3338",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'KodExplorer'
+                        },
+                        {
+                            s: "https",
+                            h: "192.168.1.100",
+                            p: "5244",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Alist'
+                        },
+                        {
+                            s: "https",
+                            h: "192.168.1.100",
+                            p: "8009",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Portainter'
+                        },
+                        {
+                            s: "https",
+                            h: "w.wice.eu.org",
+                            p: "3338",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Piwigo'
+                        },
+                        {
+                            s: "https",
+                            h: "b.wice.eu.org",
+                            p: "3338",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Blog'
+                        },
+                        {
+                            s: "https",
+                            h: "sou.wice.eu.org",
+                            p: "3338",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Sou'
+                        },
+                        {
+                            s: "https",
+                            h: "f.wice.eu.org",
+                            p: "3338",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Flare'
+                        },
+                        {
+                            s: "https",
+                            h: "y.wice.eu.org",
+                            p: "3338",
+                            u: "/",
+                            t: "_blank",
+                            o: "openWin(this)",
+                            name: 'Yahei'
+                        }
+                    ],
+                    rows: [
+                        {
+                            name: "热门常用",
+                            icon: "#icon-remen",
+                            items: [
+                                {
+                                    s: "https",
+                                    h: "m.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-bianjixie",
+                                    name: 'Mindoc'
+                                },
+                                {
+                                    s: "https",
+                                    h: "s.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-siyuan-2",
+                                    name: 'Siyuan'
+                                },
+                                {
+                                    s: "https",
+                                    h: "n.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-bokeyuan",
+                                    name: 'Notes'
+                                },
+                                {
+                                    s: "https",
+                                    h: "o.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-biji",
+                                    name: 'Memos'
+                                },
+                                {
+                                    s: "https",
+                                    h: "t.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-Terminal",
+                                    name: 'Ttyd'
+                                },
+                                {
+                                    s: "https",
+                                    h: "k.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-kodcloud",
+                                    name: 'Kodbox'
+                                },
+                                {
+                                    s: "https",
+                                    h: "ke.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-kod-explorer",
+                                    name: 'KodExplorer'
+                                },
+                                {
+                                    s: "https",
+                                    h: "b.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-boke",
+                                    name: 'Blog'
+                                },
+                                {
+                                    s: "https",
+                                    h: "a.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-alist",
+                                    name: 'Alist'
+                                },
+                                {
+                                    s: "https",
+                                    h: "w.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-tupian",
+                                    name: 'Piwigo'
+                                },
+                                {
+                                    s: "https",
+                                    h: "p.wice.eu.org",
+                                    p: "3338",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-Docker",
+                                    name: 'Portainter'
+                                },
+                                {
+                                    s: "https",
+                                    h: "aio.pages.dev",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-aixinzhijia",
+                                    name: 'HomePage'
+                                },
+                                {
+                                    s: "https",
+                                    h: "8ook.pages.dev",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-a-iconsousuochakan",
+                                    name: 'Reference'
+                                },
+                                {
+                                    s: "https",
+                                    h: "h5a.pages.dev",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-huaban1",
+                                    name: 'Draw'
+                                },
+                                {
+                                    s: "https",
+                                    h: "ho5t.pages.dev",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-htmlbianjiqi",
+                                    name: 'Edit'
+                                },
+                                {
+                                    s: "https",
+                                    h: "wice.pages.dev",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-w",
+                                    name: 'Wice'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.bilibili.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-bili",
+                                    name: '哔哩哔哩'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.douyin.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-douyin",
+                                    name: '抖音'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.coolexe.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-zhuchengxu",
+                                    name: '阿酷软件'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.iplaysoft.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-xiaochengxu",
+                                    name: '异次元'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.ithome.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-tubiaozhizuomoban",
+                                    name: 'IT之家'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.weibo.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-weibo",
+                                    name: '微博'
+                                },
+                                {
+                                    s: "https",
+                                    h: "post.smzdm.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-shimozhidemai",
+                                    name: '张大妈'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.mi.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-icon-xiaomiguishu",
+                                    name: '小米商城'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.ithome.com",
+                                    p: "",
+                                    u: "/bibei",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-microsoft",
+                                    name: '装机必备'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.aliyundrive.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-tengxunyun",
+                                    name: '阿里云盘'
+                                },
+                                {
+                                    s: "https",
+                                    h: "adzhp.cn",
+                                    p: "",
+                                    u: "/hotnews",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-xinwen",
+                                    name: '热点新闻'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.yida178.cn",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-kuaidiwuliu",
+                                    name: '易达178'
+                                },
+                                {
+                                    s: "https",
+                                    h: "yi.sunlands.com",
+                                    p: "",
+                                    u: "",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-xuexiao",
+                                    name: '尚德机构'
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.kdocs.cn",
+                                    p: "",
+                                    u: "/l/ce6gIRGCAzW3",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-feiji",
+                                    name: 'yunpan'
+                                }
+                            ]
+                        },
+                        {
+                            name: "视频娱乐",
+                            icon: "#icon-shipin",
+                            items: [
+                                {
+                                    s: "https",
+                                    h: "store.epicgames.com/zh-CN",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-epic",
+                                    name: "EPIC"
+                                },
+                                {
+                                    s: "https",
+                                    h: "renrys.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-renrenyingshi",
+                                    name: "人人影视"
+                                },
+                                {
+                                    s: "https",
+                                    h: "wwm3.shop",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-dianying",
+                                    name: "555电影"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.kanju6.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-dianshiju",
+                                    name: "看剧啦"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.huya.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-Artboard",
+                                    name: "虎牙直播"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.mgtv.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-mangguoTV",
+                                    name: "芒果TV"
+                                },
+                                {
+                                    s: "https",
+                                    h: "v.qq.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-tengxunshipin",
+                                    name: "腾讯视频"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.youku.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-youku",
+                                    name: "优酷"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.iqiyi.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-aiqiyi",
+                                    name: "爱奇艺"
+                                },
+                                {
+                                    s: "https",
+                                    h: "tv.cctv.com",
+                                    p: "",
+                                    u: "/live/index.shtml",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-cctv",
+                                    name: "CCTV直播"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.acfun.cn/index.html",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-acfun",
+                                    name: "ACFUN"
+                                },
+                                {
+                                    s: "https",
+                                    h: "k1080.net",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-yingshi",
+                                    name: "K1080"
+                                },
+                                {
+                                    s: "https",
+                                    h: "yunbtv.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-yunbo",
+                                    name: "云播TV"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.youtube.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-youtube",
+                                    name: "Youtube"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.nfmovies.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-netflix",
+                                    name: "奈非影视"
+                                }
+                            ]
+                        },
+                        {
+                            name: "生活",
+                            icon: "#icon-gouwuche",
+                            items: [
+                                {
+                                    s: "https",
+                                    h: "www.beijing.gov.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-beijing-copy",
+                                    name: "首都之窗"
+                                },
+                                {
+                                    s: "https",
+                                    h: "xkczb.jtw.beijing.gov.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-buhuanchepai",
+                                    name: "摇号"
+                                },
+                                {
+                                    s: "https",
+                                    h: "gjj.beijing.gov.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-xiaozhuchuxuguan",
+                                    name: "公积金"
+                                },
+                                {
+                                    s: "https",
+                                    h: "zikao.bjeea.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-wodexuexi",
+                                    name: "自学考试"
+                                },
+                                {
+                                    s: "https",
+                                    h: "oshwhub.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-circuitboard",
+                                    name: "嘉立创"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.taobao.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-taobao",
+                                    name: "淘宝网"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.jd.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-jingdong",
+                                    name: "京东"
+                                },
+                                {
+                                    s: "https",
+                                    h: "mobile.yangkeduo.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-pinduoduo",
+                                    name: "拼多多"
+                                },
+                                {
+                                    s: "https",
+                                    h: "temai.m.taobao.com",
+                                    p: "",
+                                    u: "/index.htm?pid=mm_30753570_11166349_39936732&union_lens=lensId%3APUB%401609381375%400b092c84_0de3_176b69aecf8_03eb%4001",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-temai",
+                                    name: "淘宝特卖"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.suning.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-suning",
+                                    name: "苏宁易购"
+                                },
+                                {
+                                    s: "https",
+                                    h: "you.163.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-yanxuan",
+                                    name: "网易严选"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.amazon.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-amazon",
+                                    name: "亚马逊"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.dangdang.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-dangdang",
+                                    name: "当当"
+                                }
+                            ]
+                        },
+                        {
+                            name: "工具",
+                            icon: "#icon-ai-tool",
+                            items: [
+                                {
+                                    s: "https",
+                                    h: "www.123pan.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-shuzi",
+                                    name: "123云盘"
+                                },
+                                {
+                                    s: "https",
+                                    h: "pan.baidu.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-baiduwangpan",
+                                    name: "百度网盘"
+                                },
+                                {
+                                    s: "https",
+                                    h: "tools.miku.ac",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-ai-tool",
+                                    name: "Miku工具"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.ip.cn",
+                                    p: "",
+                                    u: "/dns.html",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-wangluo",
+                                    name: "IP查询"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.jsons.cn",
+                                    p: "",
+                                    u: "/ipbatch",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-ip",
+                                    name: "IP批量查询"
+                                },
+                                {
+                                    s: "https",
+                                    h: "fanyi.youdao.com",
+                                    p: "",
+                                    u: "/index.html",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-youdaofanyi",
+                                    name: "有道翻译"
+                                },
+                                {
+                                    s: "https",
+                                    h: "qrbtf.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-erweima",
+                                    name: "二维码"
+                                },
+                                {
+                                    s: "https",
+                                    h: "onlineconvertfree.com",
+                                    p: "",
+                                    u: "/zh",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-geshizhuanhuan-xuanzhong",
+                                    name: "格式转换"
+                                },
+                                {
+                                    s: "https",
+                                    h: "pandao.github.io",
+                                    p: "",
+                                    u: "/editor.md/index.html",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-md",
+                                    name: "MD编辑器"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.usey.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-gongjuxiang",
+                                    name: "优易工具"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.json.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-JSON",
+                                    name: "Json.cn"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.bejson.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-ToJSON",
+                                    name: "beJson"
+                                },
+                                {
+                                    s: "https",
+                                    h: "5iux.cn",
+                                    p: "",
+                                    u: "/base64",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-base64",
+                                    name: "Base64"
+                                },
+                                {
+                                    s: "https",
+                                    h: "javascriptobfuscator.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-jshunxiao",
+                                    name: "JS混淆器"
+                                },
+                                {
+                                    s: "https",
+                                    h: "ping.pe",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-wangluo1",
+                                    name: "Ping.pe"
+                                },
+                                {
+                                    s: "https",
+                                    h: "ping.chinaz.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-pingup",
+                                    name: "站长Ping"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.slimego.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-shilaimu",
+                                    name: "史莱姆"
+                                },
+                                {
+                                    s: "https",
+                                    h: "feedly.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-feedly",
+                                    name: "Feedly"
+                                },
+                                {
+                                    s: "https",
+                                    h: "cubic-bezier.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-quxian",
+                                    name: "贝赛尔曲线"
+                                },
+                                {
+                                    s: "https",
+                                    h: "apkdl.in",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-anzhuo",
+                                    name: "APK下载"
+                                }
+                            ]
+                        },
+                        {
+                            name: "开发",
+                            icon: "#icon-kongzhitai",
+                            items: [
+                                {
+                                    s: "https",
+                                    h: "gitee.com/imvn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-gitee",
+                                    name: "Gitee"
+                                },
+                                {
+                                    s: "https",
+                                    h: "github.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-github",
+                                    name: "Github"
+                                },
+                                {
+                                    s: "https",
+                                    h: "hub.docker.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-ziyuan1",
+                                    name: "Docker Hub"
+                                },
+                                {
+                                    s: "https",
+                                    h: "codepen.io",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-codepen",
+                                    name: "Codepen"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.w3school.com.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-h5",
+                                    name: "W3school"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.52pojie.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-theater-masks",
+                                    name: "吾爱破解"
+                                },
+                                {
+                                    s: "https",
+                                    h: "segmentfault.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-msg",
+                                    name: "SF思否"
+                                },
+                                {
+                                    s: "https",
+                                    h: "cdnjs.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-cdnjs",
+                                    name: "CdnJs"
+                                },
+                                {
+                                    s: "https",
+                                    h: "fontawesome.com",
+                                    p: "",
+                                    u: "/icons?d=gallery&m=free",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-font-awesome",
+                                    name: "Font A."
+                                },
+                                {
+                                    s: "https",
+                                    h: "msdn.itellyou.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-windows",
+                                    name: "MSDN下载"
+                                },
+                                {
+                                    s: "https",
+                                    h: "dash.cloudflare.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-cloudflare",
+                                    name: "C. flare"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.swiper.com.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-S",
+                                    name: "Swiper"
+                                }
+                            ]
+                        },
+                        {
+                            name: "设计视觉",
+                            icon: "#icon-sheji",
+                            items: [
+                                {
+                                    s: "https",
+                                    h: "hao.5iux.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-daohang1",
+                                    name: "设计导航"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.iconfont.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-iconfont",
+                                    name: "阿里图标"
+                                },
+                                {
+                                    s: "https",
+                                    h: "fontawesome.com",
+                                    p: "",
+                                    u: "/icons",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-font-awesome",
+                                    name: "fontawesome"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.remove.bg/zh",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-tuceng",
+                                    name: "在线抠图"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.iconfinder.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-eye",
+                                    name: "IconFinder"
+                                },
+                                {
+                                    s: "https",
+                                    h: "huaban.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-huaban",
+                                    name: "花瓣"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.behance.net",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-behance",
+                                    name: "Behance"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.dribbble.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-dribbble",
+                                    name: "Dribbble"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.zcool.com.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-zhanku",
+                                    name: "站酷"
+                                },
+                                {
+                                    s: "https",
+                                    h: "uiiiuiii.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-jiaocheng",
+                                    name: "优设教程"
+                                }
+                            ]
+                        },
+                        {
+                            name: "社交资讯",
+                            icon: "#icon-msg",
+                            items: [
+                                {
+                                    s: "https",
+                                    h: "www.zhihu.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-zhihu",
+                                    name: "知乎"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.douban.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-douban",
+                                    name: "豆瓣"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.jianshu.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-jianshu",
+                                    name: "简书"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.v2ex.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-v2ex",
+                                    name: "V2EX"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.instagram.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-instagram",
+                                    name: "Instagram"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.twitter.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-twitter",
+                                    name: "Twitter"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.facebook.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-facebook",
+                                    name: "Facebook"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.pinterest.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-pinterest",
+                                    name: "Pinterest"
+                                }
+                            ]
+                        },
+                        {
+                            name: "邮箱",
+                            icon: "#icon-youxiang",
+                            items: [
+                                {
+                                    s: "https",
+                                    h: "mail.google.com",
+                                    p: "",
+                                    u: "/mail/u/0/#inbox",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-gmail",
+                                    name: "Gmail"
+                                },
+                                {
+                                    s: "https",
+                                    h: "outlook.live.com",
+                                    p: "",
+                                    u: "/mail",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-windows",
+                                    name: "Hotmail"
+                                },
+                                {
+                                    s: "https",
+                                    h: "mail.163.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-wangyi",
+                                    name: "网易邮箱"
+                                },
+                                {
+                                    s: "https",
+                                    h: "mail.sina.com.cn",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-xinlangwang",
+                                    name: "新浪邮箱"
+                                },
+                                {
+                                    s: "https",
+                                    h: "mail.qq.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-QQ",
+                                    name: "QQ邮箱"
+                                },
+                                {
+                                    s: "https",
+                                    h: "qiye.aliyun.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-yunyouxiang",
+                                    name: "阿里邮箱"
+                                }
+                            ]
+                        },
+                        {
+                            name: "搜索引擎",
+                            icon: "#icon-sousuo",
+                            items: [
+                                {
+                                    s: "https",
+                                    h: "www.google.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-google",
+                                    name: "Google"
+                                },
+                                {
+                                    s: "https",
+                                    h: "baidu.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-icon_baidulogo",
+                                    name: "百度"
+                                },
+                                {
+                                    s: "https",
+                                    h: "duckduckgo.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-duck",
+                                    name: "DuckGo"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.bing.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-bing",
+                                    name: "Bing"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.sogou.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-sougou",
+                                    name: "搜狗"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.naver.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-icon-test",
+                                    name: "NAVER"
+                                },
+                                {
+                                    s: "https",
+                                    h: "mijisou.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-miji",
+                                    name: "秘迹"
+                                },
+                                {
+                                    s: "https",
+                                    h: "www.dogedoge.com",
+                                    p: "",
+                                    u: "/",
+                                    t: "_blank",
+                                    o: "openWin(this)",
+                                    icon: "#icon-gougou",
+                                    name: "多吉"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }).mount('#app')
+        function openWin(o){
+            console.log(o);
+        }
+        eval(function(e, t, a, c, i, n) {
+            if (i = function(e) {
+                    return (e < t ? "" : i(parseInt(e / t))) + (35 < (e %= t) ? String.fromCharCode(e + 29) : e.toString(36))
+                }, !"".replace(/^/, String)) {
+                for (; a--;) n[i(a)] = c[a] || i(a);
+                c = [function(e) {
+                    return n[e]
+                }], i = function() {
+                    return "\\w+"
+                }, a = 1
+            }
+            for (; a--;) c[a] && (e = e.replace(new RegExp("\\b" + i(a) + "\\b", "g"), c[a]));
+            return e
+        }('!2(){2 g(){h(),i(),j(),k()}2 h(){d.9=s()}2 i(){z a=4.8(\'A[B="7"][5="\'+p()+\'"]\');a&&(a.9=!0,l(a))}2 j(){v(u())}2 k(){w(t())}2 l(a){P(z b=0;b<e.O;b++)e[b].I.1c("s-M");a.F.F.F.I.V("s-M")}2 m(a,b){E.H.S("L"+a,b)}2 n(a){6 E.H.Y("L"+a)}2 o(a){f=a.3,v(u()),w(a.3.5),m("7",a.3.5),c.K(),l(a.3)}2 p(){z b=n("7");6 b||a[0].5}2 q(a){m("J",a.3.9?1:-1),x(a.3.9)}2 r(a){6 a.11(),""==c.5?(c.K(),!1):(w(t()+c.5),x(s()),s()?E.U(b.G,+T X):13.Z=b.G,10 0)}2 s(){z a=n("J");6 a?1==a:!0}2 t(){6 4.8(\'A[B="7"]:9\').5}2 u(){6 4.8(\'A[B="7"]:9\').W("14-N")}2 v(a){c.1e("N",a)}2 w(a){b.G=a}2 x(a){a?b.3="1a":b.16("3")}z y,a=4.R(\'A[B="7"]\'),b=4.8("#18-C-19"),c=4.8("#C-12"),d=4.8("#17-C-15"),e=4.R(".C-1b"),f=a[0];P(g(),y=0;y<a.O;y++)a[y].D("Q",o);d.D("Q",q),b.D("1d",r)}();', 62, 77, "||function|target|document|value|return|type|querySelector|checked||||||||||||||||||||||||||var|input|name|search|addEventListener|window|parentNode|action|localStorage|classList|newWindow|focus|superSearch|current|placeholder|length|for|change|querySelectorAll|setItem|new|open|add|getAttribute|Date|getItem|href|void|preventDefault|text|location|data|blank|removeAttribute|set|super|fm|_blank|group|remove|submit|setAttribute".split("|"), 0, {}));
+        </script>
+        <script src="bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </div>
+</body>
+
+</html>
