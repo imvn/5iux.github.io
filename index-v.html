@@ -1656,7 +1656,12 @@
             }
         }).mount('#app')
         function openWin(o){
-            console.log(o);
+            var scheme = o.getAttribute("s")?o.getAttribute("s"):"https";
+            var host = o.getAttribute("h")?o.getAttribute("h"):"wice.eu.org";
+            var port = o.getAttribute("p")?o.getAttribute("p"):"";
+            var uri = o.getAttribute("u")?o.getAttribute("u"):"/";
+            var target = o.getAttribute("t")?o.getAttribute("t"):"_blank";
+            window.open(scheme+"://"+host+":"+port+uri,target);
         }
         eval(function(e, t, a, c, i, n) {
             if (i = function(e) {
