@@ -9,11 +9,19 @@ body{ font-size: 14px; background: #f4f8fb; overflow-x:hidden;  }
 a{cursor:pointer}
 a{text-decoration: none;}
 a:hover{text-decoration: none;}
+.logo-icon{height: 32px;width: 32px; margin: 5px -10px 0px 8px; vertical-align: -0.15em; fill: currentColor; overflow: hidden;}
+.submit .icon {width: 20px; height: 20px; margin:7px 0; color: #29f;}
 svg.icon { width: 14px; height: 14px; margin: 0 5px 0 8px; vertical-align: -0.15em; fill: currentColor; overflow: hidden;}
 /*menu*/
 .navbar-light .navbar-nav .nav-link{ color: #fbc6ad; }
 .navbar-light .navbar-nav .active .nav-link{ color: #fbc6ad; }
 .navbar-light .navbar-nav .nav-link:hover{ color: #fff; }
+.navbar-toggler svg {width: 24px;height: 24px;}
+.navbar-toggler .bi-list-nested {display: none;}
+.navbar-toggler.collapsed .bi-list-nested {display: block;}
+.navbar-toggler.collapsed .bi-x {display: none;}
+.navbar-toggler .bi-x {display: block;}
+.navbar-top {position: absolute; z-index: 10000;}
 /* --- search --- */
 #search{width:100%;margin:0; padding: 0 0 10px; position: relative; z-index: 2000;  border-radius: 5px;}
 #search form{position:relative}
@@ -22,7 +30,8 @@ svg.icon { width: 14px; height: 14px; margin: 0 5px 0 8px; vertical-align: -0.15
 #search button{position:absolute;top:0;right:0;background:none;border:0; border-radius:20px;width:60px;height:36px;margin:7px 0 0;line-height:36px;border-radius:3px; outline: none;}
 #search button:hover{cursor:pointer}
 #search button i{color:#ddd;font-size:18px}
-.search-group{display:none;padding-left:75px}
+.search-group{display:none;padding-left:6px}
+.search-item{margin-right: 4px;}
 .s-current .search-type{padding-left:0;display:block}
 .s-current{display:block}
 #search-list{position:relative}
@@ -48,6 +57,7 @@ svg.icon { width: 14px; height: 14px; margin: 0 5px 0 8px; vertical-align: -0.15
 .set-check{margin-top:3px;font-size:9pt}.set-check label{margin-left:3px}
 .set-check input,.set-check label{opacity:0;transition:all .3s ease}
 .search-type li{list-style:none;display:inline-block}
+.container{margin-top: 100px; position: relative; z-index: 100;}
 .mylist{list-style: none; padding:10px 20px; position: relative; z-index: 1000; margin: 20px 0; border-radius: 15px; background: #fff; box-shadow: 0 0.5rem 0.625rem #d4d4d44d}
 .mylist li.col-3{ width: 100px; transition: 0.3s all linear; font-size: 14px; overflow: hidden; padding:10px 0; border-radius: 10px;}
 .mylist li.col-3 svg{ display: block; width: 45px; height: 45px; padding: 8px; background: #fff;border: 1px solid #eee;  border-radius:10px; margin: 0 auto; }
@@ -65,7 +75,7 @@ svg.icon { width: 14px; height: 14px; margin: 0 5px 0 8px; vertical-align: -0.15
 }
 .banner-video video{width:2048px; float:left; }
 .banner-video img{width:1920px; float:left; }
-.bottom-cover{ width: 100%; height: 50%; position: absolute; bottom:0px; z-index: 10; }
+.bottom-cover{ width: 100%; height: 50%; position: absolute; bottom:0px; z-index: 10; background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(244, 248, 251, 0.6) 50%, rgb(244, 248, 251) 100%);}
 
 @media screen and (min-width:1200px){
     .mylist li.col-3{ min-width: 132px;}
